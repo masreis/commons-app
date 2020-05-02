@@ -1,6 +1,5 @@
 package net.marcoreis.commons.lang;
 
-import java.io.ByteArrayInputStream;
 import java.util.Map;
 
 public class WordPressCommentLanguageUtil {
@@ -25,15 +24,14 @@ public class WordPressCommentLanguageUtil {
 			Map<Long, String> map = util.readComments();
 			for (Long id : map.keySet()) {
 				String comment = map.get(id);
-				String language = tikaUtil.identifyLanguage(
-						new ByteArrayInputStream(
-								comment.getBytes()));
+				String language = tikaUtil
+						.identifyLanguage(comment.getBytes());
 				if (language.equals("pt")) {
 					System.out.println("Comment: [" + id + "]: "
 							+ comment);
 					System.out.println("=============");
 				} else {
-					util.deleteComment(id);
+					// util.deleteComment(id);
 				}
 			}
 			util.close();
